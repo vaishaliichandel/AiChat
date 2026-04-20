@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val scope = rememberCoroutineScope()
-            val savedTheme by themePreferences.themeFlow.collectAsState(initial = AppTheme.SYSTEM)
+            val savedTheme by themePreferences.themeFlow.collectAsState(initial = AppTheme.LIGHT)
             
             AiChatTheme(appTheme = savedTheme) {
                 ChatScreen(

@@ -169,6 +169,28 @@ class ChatViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
     
+    fun deleteChat(chatId: String) {
+        viewModelScope.launch {
+            chatDao.deleteChat(chatId)
+            if (_uiState.value.currentChatId == chatId) {
+                startNewChat()
+            }
+        }
+    }
+
+    fun renameChat(chatId: String, newTitle: String) {
+        viewModelScope.launch {
+            chatDao.getAllChats().first().find { it.id == chatId }?.let { chat ->
+                chatDao.insertChat(chat.copy(title = newTitle))
+            }
+        }
+    }
+
+    fun stopGenerating() {
+        chatJob?.cancel()
+        _uiState.update { it.copy(isLoading = false) }
+    }
+
     fun setDrawerOpen(isOpen: Boolean) {
         _uiState.update { it.copy(isDrawerOpen = isOpen) }
     }
