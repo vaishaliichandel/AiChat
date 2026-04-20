@@ -11,23 +11,17 @@ import com.vaishali.aichat.R
 val Poppins = FontFamily(
     Font(R.font.poppins_bold, FontWeight.Bold),
     Font(R.font.poppins_semi_bold, FontWeight.SemiBold),
-    Font(R.font.poppins_medium, FontWeight.Medium)
+    Font(R.font.poppins_medium, FontWeight.Medium),
+    Font(R.font.poppins_medium, FontWeight.Normal)
 )
 
 // Set of Material typography styles to start with
 val Typography = Typography(
-    bodyLarge = TextStyle(
-        fontFamily = Poppins,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
-    ),
-    titleLarge = TextStyle(
+    headlineLarge = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.Bold,
-        fontSize = 22.sp,
-        lineHeight = 28.sp,
+        fontSize = 32.sp,
+        lineHeight = 40.sp,
         letterSpacing = 0.sp
     ),
     headlineMedium = TextStyle(
@@ -37,11 +31,46 @@ val Typography = Typography(
         lineHeight = 36.sp,
         letterSpacing = 0.sp
     ),
+    titleLarge = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Bold,
+        fontSize = 22.sp,
+        lineHeight = 28.sp,
+        letterSpacing = 0.sp
+    ),
+    titleMedium = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 18.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.15.sp
+    ),
+    bodyLarge = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp
+    ),
+    bodyMedium = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp,
+        lineHeight = 20.sp,
+        letterSpacing = 0.25.sp
+    ),
     labelLarge = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.Medium,
         fontSize = 14.sp,
         lineHeight = 20.sp,
         letterSpacing = 0.1.sp
+    ),
+    labelSmall = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Medium,
+        fontSize = 11.sp,
+        lineHeight = 16.sp,
+        letterSpacing = 0.5.sp
     )
 )

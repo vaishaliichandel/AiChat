@@ -1,5 +1,7 @@
 package com.vaishali.aichat.ui.theme
 
+import android.content.Intent
+import android.net.Uri
 import android.Manifest
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -188,15 +190,95 @@ fun SettingsScreen(
 
             HorizontalDivider(modifier = Modifier.padding(vertical = 24.dp))
 
-            Text("About Me", style = MaterialTheme.typography.titleMedium)
+            Text("Permissions", style = MaterialTheme.typography.titleMedium)
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                "I am Aethra AI, your personal intelligent assistant powered by Gemini. " +
-                "I can help you write, code, summarize information, and plan your day. " +
-                "Developed with Jetpack Compose for a modern, fluid experience.",
+                "• Record Audio: Used for voice-to-text input to allow you to speak your messages.",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
+            Text(
+                "• Internet: Used to connect with Google Gemini API to provide AI-powered responses.",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+
+            HorizontalDivider(modifier = Modifier.padding(vertical = 24.dp))
+
+            Text("About Developer", style = MaterialTheme.typography.titleMedium)
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                "Hi, I'm Vaishali Chandel, the developer of Aethra AI. I'm passionate about building modern, intuitive Android applications using Jetpack Compose and integrating cutting-edge AI technologies.",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+
+            val context = LocalContext.current
+
+            fun openUrl(url: String) {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                context.startActivity(intent)
+            }
+
+            fun sendEmail(email: String) {
+                val intent = Intent(Intent.ACTION_SENDTO).apply {
+                    data = Uri.parse("mailto:$email")
+                }
+                context.startActivity(intent)
+            }
+
+            // Gmail
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { sendEmail("vaishali.android.dev@gmail.com") }
+                    .padding(vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(Icons.Default.Email, contentDescription = null, modifier = Modifier.size(18.dp), tint = MaterialTheme.colorScheme.primary)
+                Spacer(modifier = Modifier.width(8.dp))
+                Text("vaishali.android.dev@gmail.com", style = MaterialTheme.typography.bodyMedium)
+            }
+
+            // LinkedIn
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { openUrl("https://www.linkedin.com/in/vaishalichandel/") }
+                    .padding(vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(Icons.Default.Link, contentDescription = null, modifier = Modifier.size(18.dp), tint = MaterialTheme.colorScheme.primary)
+                Spacer(modifier = Modifier.width(8.dp))
+                Text("LinkedIn Profile", style = MaterialTheme.typography.bodyMedium)
+            }
+
+            // Instagram
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { openUrl("https://www.instagram.com/kotlinsnippets/") }
+                    .padding(vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(Icons.Default.CameraAlt, contentDescription = null, modifier = Modifier.size(18.dp), tint = Color(0xFFE4405F))
+                Spacer(modifier = Modifier.width(8.dp))
+                Text("Instagram (@kotlinsnippets)", style = MaterialTheme.typography.bodyMedium)
+            }
+
+            // Freelance / Fiverr
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { openUrl("https://www.fiverr.com/s/bdNEEdq") }
+                    .padding(vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(Icons.Default.Work, contentDescription = null, modifier = Modifier.size(18.dp), tint = Color(0xFF1DBF73))
+                Spacer(modifier = Modifier.width(8.dp))
+                Text("Looking for freelance developer?", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Bold)
+            }
         }
     }
 }
